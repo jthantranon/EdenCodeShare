@@ -1,0 +1,24 @@
+application: mecs
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: true
+
+handlers:
+
+- url: /js
+  static_dir: js
+
+- url: /eden.*
+  script: EdenEden.app
+  
+- url: /cic.*
+  script: EdenCIC.app
+
+- url: /.*
+  static_files: main.html
+  upload: main.html
+
+libraries:
+- name: jinja2
+  version: latest
