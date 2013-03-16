@@ -9,7 +9,7 @@ from google.appengine.api import channel
 from EdenModels import *
 
 
-xID =  str(users.get_current_user().user_id()) #might have to move this into private scopes? may have sesh persist problems
+xID =  users.get_current_user().user_id() #might have to move this into private scopes? may have sesh persist problems
 
 
 class Actualize():
@@ -28,8 +28,16 @@ class Actualize():
         else:
             return source
 
+class Msg():
+    name = 'stuff'
+    info = 'heh'
+
 def aChan():
     token = channel.create_channel(xID,1440)
+    msg = Msg()
+    msg.info = 'ho'
+    tomsg = json.dumps(msg.__dict__)
+    channel.send_message(xID, tomsg)
     return token
 
 def myPixel():

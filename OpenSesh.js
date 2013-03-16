@@ -1,5 +1,4 @@
-$(document).ready(function(){
-	function OpenSesh(){
+function OpenSesh(){
 		var channel;
 		var handler;
 		var socket;
@@ -14,7 +13,7 @@ $(document).ready(function(){
 			};
 			
 			onMessage = function(msg) {
-			    console.debug('onMessage: ' + msg.name);
+			    console.debug('onMessage: ' + msg.data);
 //			    pack = JSON.parse(msg.data);
 			};
 			
@@ -34,21 +33,7 @@ $(document).ready(function(){
 				socket.onopen = onOpen;
 				socket.onmessage = onMessage;
 		};
-			setTimeout(openChannel, 50);
+			
+			 setTimeout(openChannel, 50);
 		});
-	};
-	
-	OpenSesh();
-	
-	function cb(msg){
-		console.debug(msg);
-	};
-	
-//	alert('hello');
-	
-//	$.getJSON('/cic/immigration',function(data){
-//		cb(data);
-//	});
-	
-	
-});
+	}
